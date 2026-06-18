@@ -102,6 +102,7 @@ html_safelisted_schemes = (
     "xmpp",
     "zotero",
     "asanadesktop",
+    "riselink",
 )
 auto_linked_schemes = ["https?", "hansoft", "obsidian", "zotero", "asanadesktop"]
 allowed_schemes = ("http", "https", "ftp", "file", "mid", *html_safelisted_schemes)
