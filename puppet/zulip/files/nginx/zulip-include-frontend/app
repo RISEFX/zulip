@@ -140,6 +140,24 @@ location /avatar {
     include uwsgi_params;
 }
 location /user_uploads {
+    # restrict-uploads-10net: Serve uploaded files only to RISEFX
+    # internal networks. The ranges are NetBox prefixes. The second
+    # octet is the site: 10 BER, 20 CGN, 30 STR, 40 MUC, 50 LON.
+    allow 127.0.0.1;
+    # Production VLANs
+    allow 10.10.8.0/21;
+    allow 10.20.8.0/21;
+    allow 10.30.8.0/21;
+    allow 10.40.8.0/21;
+    allow 10.50.8.0/21;
+    # Admin VPN clients
+    allow 10.10.36.128/25;
+    allow 10.20.36.128/25;
+    allow 10.30.36.128/25;
+    allow 10.40.36.128/25;
+    allow 10.50.36.128/25;
+    deny all;
+
     include /etc/nginx/zulip-include/api_headers;
 
     include uwsgi_params;
